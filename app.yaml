@@ -1,3 +1,32 @@
-runtime: nodejs14
-env: standard
-instance_class: F1
+runtime: nodejs14  # The runtime environment for your application (Node.js 14 in this example).
+
+handlers:
+  - url: /static
+    static_dir: static  # The directory where static files like CSS, JS, and images are stored.
+
+  - url: /.*
+    script: auto  # This indicates that the URL path should be handled by your application code.
+
+automatic_scaling:
+  target_cpu_utilization: 0.65  # Automatic scaling based on CPU utilization (adjust as needed).
+
+# Add any environment variables if required.
+# env_variables:
+#   VAR_NAME: value
+
+# Define other settings or services you want to enable, such as the datastore, cloud SQL, etc.
+# runtime_config:
+#   key: value
+
+# If you need to specify additional libraries or dependencies, you can do it with the "libraries" section.
+# libraries:
+# - name: express
+#   version: "4.17.1"
+
+# You can also specify inbound services or traffic splitting, if needed.
+# inbound_services:
+# - warmup
+
+# traffic_split:
+#   shard1: 0.5
+#   shard2: 0.5
